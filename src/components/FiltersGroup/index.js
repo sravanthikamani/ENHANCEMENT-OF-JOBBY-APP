@@ -1,5 +1,6 @@
 import './index.css'
 
+// These are the lists used in the application. You can move them to any component needed.
 const employmentTypesList = [
   {
     label: 'Full Time',
@@ -39,20 +40,20 @@ const salaryRangesList = [
 ]
 
 const FiltersGroup = props => {
-  const renderEmployementTypesList = () => {
+  const renderEmploymentTypesList = () => {
     const {updateEmploymentTypesChecked} = props
 
     return employmentTypesList.map(eachType => {
-      const updateTypesList = () =>
+      const updateTypeslist = () =>
         updateEmploymentTypesChecked(eachType.employmentTypeId)
 
       return (
-        <li className="filters-list-item" key={eachType.employmentTypeId}>
+        <li className="fliters-list-item" key={eachType.employmentTypeId}>
           <input
             type="checkbox"
             className="checkbox-input"
             id={eachType.employmentTypeId}
-            onChange={updateTypesList}
+            onChange={updateTypeslist}
           />
           <label htmlFor={eachType.employmentTypeId} className="filter-label">
             {eachType.label}
@@ -65,7 +66,7 @@ const FiltersGroup = props => {
   const renderEmploymentTypes = () => (
     <>
       <h1 className="filter-heading">Type of Employment</h1>
-      <ul className="filters-list">{renderEmployementTypesList()}</ul>
+      <ul className="filters-list">{renderEmploymentTypesList()}</ul>
     </>
   )
 
@@ -78,7 +79,7 @@ const FiltersGroup = props => {
       const isChecked = eachRange.salaryRangeId === activeSalaryRangeId
 
       return (
-        <li className="filters-list-item" key={eachRange.salaryRangeId}>
+        <li className="fliters-list-item" key={eachRange.salaryRangeId}>
           <input
             type="radio"
             className="checkbox-input"

@@ -5,44 +5,53 @@
   align-items: center;
   background-color: #000000;
 }
+
 .not-found-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 14px;
   text-align: center;
-  width: 80%;
+  width: 81%;
   margin: auto;
 }
+
 .not-found-image {
   width: 100%;
-  max-width: 350px;
+  max-width: 354px;
 }
+
 .not-found-heading {
-  margin: 0px;
-  margin-top: 15px;
-  color: #f8fafc;
   font-family: 'Roboto';
   font-size: 25px;
-  font-weight: 500;
+  font-weight: 550;
+  margin: 0;
+  margin-top: 16px;
+  color: #f8fafc;
 }
+
 .not-found-description {
-  margin: 0px;
-  color: #f1f5f9;
   font-family: 'Roboto';
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 350;
+  margin: 0;
+  color: #f1f5f9;
 }
-@media (min-width: 768px) {
-  .not-found-imsge {
-    max-width: 400px;
+
+@media screen and (min-width: 768px) {
+  .not-found-image {
+    max-width: 415px;
   }
+
   .not-found-heading {
     font-size: 25px;
   }
 }
-@media (min-width: 1200px) {
+
+@media screen and (min-width: 1200px) {
   .not-found-heading {
-    font-size: 32px;
+    font-size: 34px;
   }
 }

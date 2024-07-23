@@ -1,7 +1,5 @@
 import {Component} from 'react'
-
 import Cookies from 'js-cookie'
-
 import {Redirect} from 'react-router-dom'
 
 import './index.css'
@@ -26,15 +24,20 @@ class Login extends Component {
 
   onSubmitForm = async event => {
     event.preventDefault()
-    const {username, password} = this.state
+    let {username, password} = this.state
+
+    if (username.toLowerCase().trim(' ') === 'vikas') username = 'rahul'
+    if (password === 'vikas@2024') password = 'rahul@2021'
+
     const userDetails = {username, password}
-    const loginApiUrl = 'https://apis.ccbp.in/login'
+    const LoginApiUrl = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
       body: JSON.stringify(userDetails),
     }
-    const response = await fetch(loginApiUrl, options)
+    const response = await fetch(LoginApiUrl, options)
     const data = await response.json()
+
     if (response.ok === true) {
       this.onSuccessLogin(data.jwt_token)
     } else {
@@ -42,17 +45,9 @@ class Login extends Component {
     }
   }
 
-  updateUsername = event => {
-    this.setState({
-      username: event.target.value,
-    })
-  }
+  updateUsername = event => this.setState({username: event.target.value})
 
-  updatePassword = event => {
-    this.setState({
-      password: event.target.value,
-    })
-  }
+  updatePassword = event => this.setState({password: event.target.value})
 
   renderUsernameField = () => {
     const {username} = this.state
@@ -65,7 +60,7 @@ class Login extends Component {
           type="text"
           value={username}
           className="login-input-field"
-          placeholder="username"
+          placeholder="vikas"
           id="username"
           onChange={this.updateUsername}
         />
@@ -75,7 +70,6 @@ class Login extends Component {
 
   renderPasswordField = () => {
     const {password} = this.state
-
     return (
       <div className="input-field-container">
         <label htmlFor="password" className="login-input-label">
@@ -85,7 +79,7 @@ class Login extends Component {
           type="password"
           value={password}
           className="login-input-field"
-          placeholder="password"
+          placeholder="vikas@2024"
           id="password"
           onChange={this.updatePassword}
         />
@@ -99,7 +93,6 @@ class Login extends Component {
       return <Redirect to="/" />
     }
     const {errorMsg, showErrorMsg} = this.state
-
     return (
       <div className="login-container">
         <form className="login-form" onSubmit={this.onSubmitForm}>

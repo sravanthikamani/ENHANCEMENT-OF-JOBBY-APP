@@ -1,33 +1,25 @@
 import {Component} from 'react'
-
 import Cookies from 'js-cookie'
-
 import {AiFillStar} from 'react-icons/ai'
-
 import {IoLocationSharp} from 'react-icons/io5'
-
 import {BsFillBriefcaseFill} from 'react-icons/bs'
-
 import {FiExternalLink} from 'react-icons/fi'
-
 import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
-
 import SimilarJobCard from '../SimilarJobCard'
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
-
 import './index.css'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
   failure: 'FAILURE',
-  inprogress: 'IN_PROGRESS',
+  inProgress: 'IN_PROGRESS',
 }
 
-class JobitemDetails extends Component {
+class JobItemDetails extends Component {
   state = {
     jobDetailsApiStatus: apiStatusConstants.initial,
     jobDetails: {},
@@ -38,7 +30,7 @@ class JobitemDetails extends Component {
     this.getJobItemDetails()
   }
 
-  getCamelCaseData = data => {
+  getCamelCasedData = data => {
     const jobDetails = data.job_details
 
     const updatedJobDetails = {
@@ -54,7 +46,7 @@ class JobitemDetails extends Component {
         imageUrl: eachSkill.image_url,
         name: eachSkill.name,
       })),
-      lifeAtCompany: {
+      lifeAtCompnay: {
         description: jobDetails.life_at_company.description,
         imageUrl: jobDetails.life_at_company.image_url,
       },
@@ -74,10 +66,11 @@ class JobitemDetails extends Component {
   }
 
   getJobItemDetails = async () => {
-    this.setState({jobDetailsApiStatus: apiStatusConstants.inprogress})
+    this.setState({jobDetailsApiStatus: apiStatusConstants.inProgress})
     const {match} = this.props
     const {params} = match
     const {id} = params
+
     const jwtToken = Cookies.get('jwt_token')
 
     const apiUrl = `https://apis.ccbp.in/jobs/${id}`
@@ -90,7 +83,7 @@ class JobitemDetails extends Component {
     const response = await fetch(apiUrl, options)
     const data = await response.json()
     if (response.ok === true) {
-      const {updatedJobDetails, similarJobs} = this.getCamelCaseData(data)
+      const {updatedJobDetails, similarJobs} = this.getCamelCasedData(data)
 
       this.setState({
         jobDetails: updatedJobDetails,
@@ -111,7 +104,7 @@ class JobitemDetails extends Component {
   renderApiFailureView = () => (
     <div className="jobs-api-failure-container">
       <img
-        src="https://assets.ccbp.in/frontend/react-js/failure-img.png "
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
         alt="failure view"
         className="job-api-failure-image"
       />
@@ -141,7 +134,7 @@ class JobitemDetails extends Component {
       packagePerAnnum,
       companyWebsiteUrl,
       skills,
-      lifeAtCompany,
+      lifeAtCompnay,
     } = jobDetails
 
     return (
@@ -172,6 +165,7 @@ class JobitemDetails extends Component {
             </div>
             <p className="package-text">{packagePerAnnum}</p>
           </div>
+
           <hr className="separator" />
           <div className="description-visit-link-container">
             <h1 className="description-heading-card">Description</h1>
@@ -195,15 +189,15 @@ class JobitemDetails extends Component {
           </ul>
           <h1 className="life-at-company-heading">Life at Company</h1>
           <div className="company-life-container">
-            <p className="life-description">{lifeAtCompany.description}</p>
+            <p className="life-description">{lifeAtCompnay.description}</p>
             <img
               className="life-image"
-              src={lifeAtCompany.imageUrl}
+              src={lifeAtCompnay.imageUrl}
               alt="life at company"
             />
           </div>
         </div>
-        <h1 className="similar-jobs-heading">Similar jobs</h1>
+        <h1 className="similar-jobs-heading">Similar Jobs</h1>
         <ul className="similar-jobs-list">
           {similarJobs.map(eachJob => (
             <SimilarJobCard key={eachJob.id} jobDetails={eachJob} />
@@ -216,7 +210,7 @@ class JobitemDetails extends Component {
   renderJobDetailsPage() {
     const {jobDetailsApiStatus} = this.state
     switch (jobDetailsApiStatus) {
-      case apiStatusConstants.inprogress:
+      case apiStatusConstants.inProgress:
         return this.renderLoaderView()
       case apiStatusConstants.success:
         return this.renderJobDetails()
@@ -237,4 +231,4 @@ class JobitemDetails extends Component {
   }
 }
 
-export default JobitemDetails
+export default JobItemDetails

@@ -1,8 +1,9 @@
 .similar-job-card {
-  background-color: #272727;
-  border-radius: 15px;
-  max-width: 350px;
   display: flex;
   flex-direction: column;
-  padding: 12px;
+  background-color: #272727;
+  border-radius: 16px;
+  max-width: 355px;
+  gap: 15px;
+  padding: 13px;
 }

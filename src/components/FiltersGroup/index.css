@@ -1,37 +1,40 @@
 .filters-group-container {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-bottom: 28px;
+}
+.filter-heading {
+  font-family: 'Roboto';
+  color: #f8fafc;
+  font-size: 17px;
+  font-weight: 550;
+  margin: 0;
 }
 
-.filter-heading {
-    margin: 0px;
-    font-family: 'Roboto';
-    color: #f8fafc;
-    font-size: 18px;
-    font-weight: 500;
-}
 .filters-list {
-    padding-left: 0px;
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding-left: 0;
+  gap: 16px;
+  margin: 0;
 }
-.filters-list-item {
-    display: flex;
-    align-items: center;
+.fliters-list-item {
+  display: flex;
+  align-items: center;
 }
+
 .checkbox-input {
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
-    outline: none;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  outline: none;
 }
 .filter-label {
-    font-family: 'Roboto';
-    color: #f1f5f9;
-    margin-left: 15px;
-    font-size: 15px;
-    font-weight: 400;
+  font-family: 'Roboto';
+  font-size: 17px;
+  font-weight: 450;
+  color: #f1f5f9;
+  margin-left: 17px;
 }

@@ -1,21 +1,14 @@
 import {Component} from 'react'
-
 import Cookies from 'js-cookie'
-
 import {BsSearch} from 'react-icons/bs'
-
 import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
-
 import ProfileDetails from '../ProfileDetails'
-
 import FiltersGroup from '../FiltersGroup'
-
 import JobCard from '../JobCard'
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
-
 import './index.css'
 
 const apiStatusConstants = {
@@ -64,16 +57,16 @@ class Jobs extends Component {
     const {activeSalaryRangeId, employmentTypesChecked, searchInput} =
       this.state
 
-    const employTypes = employmentTypesChecked.join()
+    const employTypes = employmentTypesChecked.join(',')
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = `https://apis.ccbp.in/jobs?employment_type=${employTypes}&minimum_package=${activeSalaryRangeId}&search=${searchInput}`
+
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
       },
       method: 'GET',
     }
-
     const response = await fetch(apiUrl, options)
     const data = await response.json()
     if (response.ok === true) {
@@ -88,7 +81,6 @@ class Jobs extends Component {
         rating: eachJob.rating,
         title: eachJob.title,
       }))
-
       this.setState({
         jobsList: updatedData,
         jobsApiStatus: apiStatusConstants.success,
@@ -109,7 +101,6 @@ class Jobs extends Component {
       },
       method: 'GET',
     }
-
     const response = await fetch(apiUrl, options)
     const data = await response.json()
     if (response.ok === true) {
@@ -128,18 +119,19 @@ class Jobs extends Component {
     }
   }
 
-  renderSearchBar = searchBarId => {
+  renderSearchBar = searchBarID => {
     const {searchInput} = this.state
     return (
-      <div className="search-bar" id={searchBarId}>
+      <div className="search-bar" id={searchBarID}>
         <input
           className="search-input"
           type="search"
           placeholder="Search"
           value={searchInput}
-          onChange={event => this.setState({searchInput: event.target.value})}
+          onChange={e => this.setState({searchInput: e.target.value})}
         />
         <button
+          aria-label="Save"
           className="search-button"
           type="button"
           data-testid="searchButton"
@@ -158,7 +150,6 @@ class Jobs extends Component {
       activeSalaryRangeId,
       employmentTypesChecked,
     } = this.state
-
     return (
       <div className="side-bar">
         {this.renderSearchBar('smallSearchBar')}
@@ -167,7 +158,7 @@ class Jobs extends Component {
           profileApiStatus={profileApiStatus}
           getProfileDetails={this.getProfileDetails}
         />
-        <hr className="separater" />
+        <hr className="separator" />
         <FiltersGroup
           updateSalaryRangeId={this.updateSalaryRangeId}
           activeSalaryRangeId={activeSalaryRangeId}
@@ -181,7 +172,7 @@ class Jobs extends Component {
   renderNoJobsView = () => (
     <div className="no-jobs-container">
       <img
-        src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png "
+        src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
         alt="no jobs"
         className="no-jobs-image"
       />
@@ -236,7 +227,7 @@ class Jobs extends Component {
     </div>
   )
 
-  renderJobsBasedOnApiStatus = () => {
+  renderJobsBasedOnAPiStatus = () => {
     const {jobsApiStatus} = this.state
 
     switch (jobsApiStatus) {
@@ -259,12 +250,11 @@ class Jobs extends Component {
           {this.renderSideBar()}
           <div className="jobs-container">
             {this.renderSearchBar('largeSearchBar')}
-            {this.renderJobsBasedOnApiStatus()}
+            {this.renderJobsBasedOnAPiStatus()}
           </div>
         </div>
       </div>
     )
   }
 }
-
 export default Jobs

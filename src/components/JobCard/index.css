@@ -1,92 +1,109 @@
 .job-card {
   background-color: #272727;
-  border-radius: 15px;
+  border-radius: 16px;
 }
+
+@media screen and (min-width: 768px) {
+  .job-card {
+    width: 91%;
+  }
+}
+
 .job-card-link {
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  padding: 12px;
-  margin: 15px;
+  gap: 15px;
+  padding: 13px;
 }
+
 .logo-title-container-card {
   display: flex;
-  margin: 10px;
-  align-items: center;
+  gap: 11px;
 }
+
 .company-logo-card {
-  width: 70px;
-  height: 70px;
+  width: 72px;
+  height: 72px;
 }
+
 .job-title-card {
-  margin: 0px;
+  margin: 0;
   color: #f8fafc;
   font-family: 'Roboto';
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 550;
+  margin-bottom: 11px;
 }
+
 .rating-container-card {
   display: flex;
   align-items: center;
-  margin: 8px;
+  gap: 9px;
 }
+
 .star-icon-card {
   color: #fbbf24;
-  width: 22px;
-  height: 22px;
+  width: 21px;
+  height: 21px;
 }
+
 .rating-number-card {
-  margin: 0px;
-  color: #f8fafc;
   font-family: 'Roboto';
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 19px;
+  font-weight: 450;
+  margin: 0;
+  color: #f8fafc;
 }
+
 .location-package-container-card {
   display: flex;
   align-items: center;
+  gap: 17px;
 }
+
 .icon-type-container-card {
   display: flex;
   align-items: center;
+  gap: 4px;
 }
+
 .type-icon {
   color: #ffffff;
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 19px;
 }
+
 .type-text {
-  margin: 0px;
   font-family: 'Roboto';
   color: #f8fafc;
-  font-weight: 300;
-  font-size: 15px;
+  font-weight: 350;
+  font-size: 16px;
+  margin: 0;
 }
+
 .package-text {
-  margin: 0px;
-  margin-left: auto;
   font-family: 'Roboto';
   color: #f8fafc;
-  font-weight: 500;
-  font-size: 20px;
-}
-.description-heading-card {
-  margin: 0px;
-  font-family: 'Roboto';
-  color: #ffffff;
-  font-weight: 400;
+  font-weight: 550;
   font-size: 17px;
+  margin: 0;
+  margin-left: auto;
 }
-.job-description-card {
-  margin: 0px;
+
+.description-heading-card {
   font-family: 'Roboto';
   color: #ffffff;
-  font-weight: 300;
-  font-size: 15px;
+  font-weight: 450;
+  font-size: 18px;
+  margin: 0;
 }
-@media (min-width: 768px) {
-  .job-card {
-    width: 90%;
-  }
+
+.job-description-card {
+  font-family: 'Roboto';
+  color: #ffffff;
+  font-weight: 350;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
 }

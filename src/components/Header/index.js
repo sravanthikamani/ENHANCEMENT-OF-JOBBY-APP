@@ -1,11 +1,7 @@
 import {Link, withRouter} from 'react-router-dom'
-
 import {AiFillHome} from 'react-icons/ai'
-
 import {BsFillBriefcaseFill} from 'react-icons/bs'
-
 import {FiLogOut} from 'react-icons/fi'
-
 import Cookies from 'js-cookie'
 
 import './index.css'
@@ -16,7 +12,6 @@ const Header = props => {
     const {history} = props
     history.replace('/login')
   }
-
   return (
     <nav className="navbar">
       <div className="nav-container">
@@ -30,7 +25,7 @@ const Header = props => {
         <ul className="nav-items">
           <li>
             <Link to="/" className="nav-link-lg">
-              Home{' '}
+              Home
             </Link>
             <Link to="/" className="nav-link-sm">
               <AiFillHome className="small-header-icons" />
@@ -46,6 +41,7 @@ const Header = props => {
           </li>
           <li className="logout-btn-list-item-small">
             <button
+              aria-label="Save"
               type="button"
               className="logout-button-sm"
               onClick={onClickLogout}
